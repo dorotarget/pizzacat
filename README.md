@@ -1,2 +1,2 @@
 # pizzacat
- python based web app
+ python based web app (pizza delivery service).
