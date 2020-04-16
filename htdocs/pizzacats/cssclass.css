@@ -1,6 +1,89 @@
-body {background-image: url('http://www.bilder-kostenlose.de/landschaftsbilder3/landschaftsbilder-04.jpg');background-repeat: no-repeat;}
+body {background-image: url('https://img.freepik.com/fotos-kostenlos/schwarzer-hintergrund-mit-mehl-platz-kopieren-draufsicht_80743-1347.jpg?size=626&ext=jpg');background-repeat: no-repeat;}
 h1 { border: 3px dotted yellow; padding: 15px; font-variant: small-caps; font-weight: bold; font-style: italic; letter-spacing: 1px; }
 h1 { color: red;}
+nav {
+    background-color: dimgrey;
+    color: red
+}
+
+
+.header {
+    background-image: url('https://cdn.pixabay.com/photo/2019/07/28/16/40/pizza-4369001_960_720.jpg');
+    color: rgb(238, 241, 12);
+    padding: 60px;
+    text-align: center;
+    font-size: 30px;
+  }
+.footer {
+    color: green
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+  }
+  
+  .button1:hover {
+    background-color: #f44336;
+    color: white;
+  }
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid darkgreen;
+  }
+  
+  .button2:hover {
+    background-color: darkgreen;
+    color: white;
+  }
+
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+
 
 *.text{font: 18pt arial;}
 *.text{color: #0000ff}

@@ -62,7 +62,23 @@ class DbTest(unittest.TestCase):
                 break
             except (Exception):
                 print("Fehler: kann keine Zeile in Tabelle Kunde hinzufügen")
-                continue        
+                continue   
+
+    def test_query_pizzaliste(self):
+        query_db = ("USE pizzastars")
+        query_all_pizzas = ("SELECT name, groesze, beschreibung, preis FROM pizza")
+
+        db_cursor = self.db_connection_pizzastars.cursor()
+        
+        db_cursor.execute(query_db)
+        db_cursor.execute(query_all_pizzas)
+        pizza_row=""
+        for(name,groesze, beschreibung, preis) in db_cursor:
+            converted_preis = "{:.2f}".format(2, preis)
+            pizza_row='<tr> <td>'+name+'</td><td>'+groesze+'</td><td>'+beschreibung+'</td><td>'+converted_preis+'</td></tr>'
+            print(pizza_row)
+        self.assertIsNotNone(pizza_row)
+
 
     def tearDown(self):
         self.db_connection_pizzastars.close
