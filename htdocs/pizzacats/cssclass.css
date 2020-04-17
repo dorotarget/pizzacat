@@ -1,11 +1,27 @@
-body {background-image: url('https://img.freepik.com/fotos-kostenlos/schwarzer-hintergrund-mit-mehl-platz-kopieren-draufsicht_80743-1347.jpg?size=626&ext=jpg');background-repeat: no-repeat;}
-h1 { border: 3px dotted yellow; padding: 15px; font-variant: small-caps; font-weight: bold; font-style: italic; letter-spacing: 1px; }
+body {
+    background-image: url('https://img.freepik.com/fotos-kostenlos/schwarzer-hintergrund-mit-mehl-platz-kopieren-draufsicht_80743-1347.jpg?size=626&ext=jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+h1 { border: 3px dotted yellow; 
+    padding: 15px; 
+    font-variant: small-caps; 
+    font-weight: bold; 
+    font-style: italic; 
+    letter-spacing: 1px; 
+    margin-left: 200px;}}
 h1 { color: red;}
+
 nav {
     background-color: dimgrey;
-    color: red
+    color: red;
+    text-align: center;
 }
-
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
 
 .header {
     background-image: url('https://cdn.pixabay.com/photo/2019/07/28/16/40/pizza-4369001_960_720.jpg');
@@ -55,7 +71,7 @@ nav {
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #f1f1f1;
+    background-color: red;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -79,7 +95,8 @@ nav {
   }
   
   div.content {
-    margin-left: 200px;
+    margin-left: 300px;
+    margin-top: 300px;
     padding: 1px 16px;
     height: 1000px;
   }
