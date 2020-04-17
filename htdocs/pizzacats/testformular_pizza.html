@@ -6,20 +6,21 @@
     <title>Bitte Pizza ausw&auml;hlen</title>                    
 </head>
 <body>                                                    
-    <form action="http://localhost:8888/cgi-bin/bestellung_keineanmeldung.py">                            
+    <form action="http://localhost:8888/cgi-bin/bestellung_keineanmeldung.py">
+        <input type="hidden" name="number_of_rows" value="4">                       
         <table>                                
             <tbody>
                 <tr>
-                    <th>Pizza</th><th>Gr&ouml;sse</th><th>Beschreibung&gt;</th><th>Preis</th><th>Anzahl</th>
+                    <th>Nr.</th><th>Pizza</th><th>Gr&ouml;sse</th><th>Beschreibung&gt;</th><th>Preis</th><th>Anzahl</th>
                 </tr>
                 <tr> 
-                    <td>Margarita</td><td>24</td><td>der Klassiker in kleiner Größe</td><td>2.00</td><td><input id="anzahl1" type="number" name="anzahl1" min="0" max="225" step="1" value="0"></td></tr>
+                    <td><input type="hidden" id="pizzaId" name="pizzaId1" value="1"><input type="hidden" id="preis" name="preis1" value="5.5">1</td><td>Margarita</td><td>24</td><td>der Klassiker in kleiner Größe</td><td>2.00</td><td><input id="anzahli" type="number" name="anzahl1" min="0" max="225" step="1" value="0"></td></tr>
                 <tr> 
-                    <td>Brokkolipizza</td><td>28</td><td>mit extra viel Brokkoli</td><td>2.00</td><td><input id="anzahl2" type="number" name="anzahl2" min="0" max="225" step="1" value="0"></td></tr>
+                    <td><input type="hidden" id="pizzaId" name="pizzaId2" value="2"><input type="hidden" id="preis" name="preis2" value="6">2</td><td>Brokkolipizza</td><td>28</td><td>mit extra viel Brokkoli</td><td>2.00</td><td><input id="anzahli" type="number" name="anzahl2" min="0" max="225" step="1" value="0"></td></tr>
                 <tr> 
-                    <td>Gemüsepizza</td><td>28</td><td>Champignons, Tomate, Zucchini, Spinat, Peperoni, Paprika und Spargel</td><td>2.00</td><td><input id="anzahl3" type="number" name="anzahl3"  min="0" max="225" step="1" value="0"></td></tr>
+                    <td><input type="hidden" id="pizzaId" name="pizzaId3" value="3"><input type="hidden" id="preis" name="preis3" value="7.5">3</td><td>Gemüsepizza</td><td>28</td><td>Champignons, Tomate, Zucchini, Spinat, Peperoni, Paprika und Spargel</td><td>2.00</td><td><input id="anzahl3" type="number" name="anzahl"  min="0" max="225" step="1" value="0"></td></tr>
                 <tr> 
-                    <td>Pizza Quatro Formaggi vegan</td><td>24</td><td>mit veganem Cheddar, Parmesan, Gorgonzola und Mozzarella</td><td>2.00</td><td><input id="anzahl4" type="number" name="anzahl4" min="0" max="225" step="1" value="0"></td></tr>
+                    <td><input type="hidden" id="pizzaId" name="pizzaId4" value="4"><input type="hidden" id="preis" name="preis4" value="6.5">4</td><td>Pizza Quatro Formaggi vegan</td><td>24</td><td>mit veganem Cheddar, Parmesan, Gorgonzola und Mozzarella</td><td>2.00</td><td><input id="anzahl4" type="number" name="anzahl" min="0" max="225" step="1" value="0"></td></tr>
             </tbody>
         </table>            
         <p>                              
