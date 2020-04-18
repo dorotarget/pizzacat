@@ -5,14 +5,17 @@ from pymysql import *
 
 class Pizzaliste:
       def __init__(self):
-        self.the_one="1"   
-      
+        self.kunde_id=-1
+
       def pizzaliste_ausgeben(self):
-        db_connection_pizzastars = mysql.connector.connect(host="localhost", user="root", passwd="")  
+        form = cgi.FieldStorage()
+        if "kundeId" in form:
+              self.kunde_id = form["kundeId"].value
+        db_connection_pizzastars = mysql.connector.connect(host="localhost", user="root", passwd="")
         query_db = ("USE pizzastars")
         query_all_pizzas = ("SELECT pizza_id, name, groesze, beschreibung, einzelpreis FROM pizza")
         print ("Content-Type: text/html")
-        print()      
+        print()
         print('<!DOCTYPE html>')
         print('<head><title>Bitte Pizza ausw&auml;hlen</title></head>\
                 <body><form action="http://localhost:8888/cgi-bin/bestellung_keineanmeldung.py">\
@@ -41,8 +44,12 @@ class Pizzaliste:
                       <td><input id="anzahl'+converted_iterator+'" type="number" name="anzahl'+converted_iterator+'" min="0" max="225" step="1" value="0"></td></tr>'
            # pizza_row='<tr><td>'+converted_pizza_id+'</td><td>'+name+'</td><td>'+groesze+'</td><td>'+beschreibung+'</td><td>'+converted_einzelpreis+'</td><td>0!</td></tr>'
             print(pizza_row)
-        print('</table><p><input type="hidden" name="number_of_rows" value="'+converted_iterator+'"><input type="submit" value="Absenden"><input type="reset" value="Zur&uuml;cksetzen"></p></form></body>')
- 
+        print('</table><p><input type="hidden" id="kundeId" name="kundeId" value="'+str(self.kunde_id)+'">\
+          <input type="hidden" name="number_of_rows" value="'+converted_iterator+'">\
+            <input type="submit" value="Absenden"><input type="reset" value="Zur&uuml;cksetzen"></p>\
+              </form>\
+                </body>')
+
 objekt=Pizzaliste()
 objekt.pizzaliste_ausgeben()
 

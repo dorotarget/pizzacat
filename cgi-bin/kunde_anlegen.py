@@ -3,7 +3,7 @@ import mysql.connector
 import cgi
 from pymysql import *
 
-class kunde_anlegen:
+class Kunde_anlegen:
       def __init__(self):
          self.vorname=""
          self.nachname=""
@@ -12,10 +12,11 @@ class kunde_anlegen:
          self.hausnummer=""
          self.ort=""
          self.postleitzahl=""
-         self.adresse_id = -1 # Konvention
+         self.adresse_id = -1 # Konvention: nicht gesetzt
+         self.kunde_id = -1 # Konvention
 
       def kunde_in_db_einfuegen(self):
-            db_connection_pizzastars = mysql.connector.connect(host="localhost", user="root", passwd="")  
+            db_connection_pizzastars = mysql.connector.connect(host="localhost", user="root", passwd="")
             query_db = ("USE pizzastars")
             db_cursor = db_connection_pizzastars.cursor()
             db_cursor.execute(query_db)
@@ -24,8 +25,9 @@ class kunde_anlegen:
             db_connection_pizzastars.commit()
             self.adresse_id = db_cursor.lastrowid
             query_kunde_einfuegen = "insert into kunde (vorname, nachname, adresse_id,email) Values ('"+self.vorname+"','"+self.nachname+"','"+str(self.adresse_id)+"','"+self.email+"')"
-            db_cursor.execute(query_kunde_einfuegen) 
-            db_connection_pizzastars.commit() 
+            db_cursor.execute(query_kunde_einfuegen)
+            db_connection_pizzastars.commit()
+            self.kunde_id = db_cursor.lastrowid
             db_connection_pizzastars.close()
 
       def fehler_ausgeben(self):
@@ -54,11 +56,11 @@ class kunde_anlegen:
             if "strasse" in form:
                   self.strasse = form["strasse"].value
             if "hausnummer" in form:
-                  self.hausnummer = form["hausnummer"].value  
+                  self.hausnummer = form["hausnummer"].value
             if "ort" in form:
-                  self.ort = form["ort"].value    
+                  self.ort = form["ort"].value
             if "postleitzahl" in form:
-                  self.postleitzahl = form["postleitzahl"].value                                                
+                  self.postleitzahl = form["postleitzahl"].value
             if "email" in form:
                   self.email = form["email"].value
             if  (self.vorname=="" or self.nachname=="" or self.strasse=="" or self.hausnummer=="" or self.ort=="" or self.postleitzahl=="" or self.email==""):
@@ -66,24 +68,26 @@ class kunde_anlegen:
             else:
                self.kunde_in_db_einfuegen()
                self.ausgabe()
-      
+
       def ausgabe(self):
             print ("Content-Type: text/html")
             print()
             print( '<!DOCTYPE html>')
             print ('<head>\
                   <title>Datenhinterlegung erfolgreich</title>\
-                  <link rel="stylesheet" type="text/css" href="../cssclasse.css"/>\
+                  <link rel="stylesheet" type="text/css" href="../cssclass.css"/>\
                   </head>\
                   <body>\
                   <h1>'+self.vorname+' '+self.nachname+', Sie haben erfolgreich Ihre Daten hinterlegt!</h1>\
-                  <p><div class = "text">Hier sind die Personendaten: '+self.vorname+' '+self.nachname+' cm, '+str(self.adresse_id)+', '+self.email+'€.</div></p>\
-                  <p>\
+                  <p><div class = "text">Hier sind die Personendaten: '+self.vorname+' '+self.nachname+', '+str(self.adresse_id)+', '+self.email+'</div></p>\
+                  <form action="http://localhost:8888/cgi-bin/pizzaliste.py">\
+                  <input type="hidden" id="kundeId" name="kundeId" value="'+str(self.kunde_id)+'">\
                   <input type="submit" value="Zur&uuml;ck" onclick = "history.back()" />\
+                  <input type="submit" value="Weiter zur Bestellung" />\
+                  </form>\
                   </p>\
                   </body>\
                   </html>')
-            
 
-objekt=kunde_anlegen()
-objekt.form_validieren()
+kundenanlage=Kunde_anlegen()
+kundenanlage.form_validieren()
