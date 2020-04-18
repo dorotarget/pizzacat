@@ -19,10 +19,11 @@ class kunde_anlegen:
             query_db = ("USE pizzastars")
             db_cursor = db_connection_pizzastars.cursor()
             db_cursor.execute(query_db)
-            query_adresse_einfuegen = "insert into adresse (strasse, hausnummer, postleitzahl, ort) Values ('"+self.strasse+"','"+self.postleitzahl+"','"+self.hausnummer+"','"+self.ort+"')"
+            query_adresse_einfuegen = "insert into adresse (strasse, hausnummer, postleitzahl, ort) Values ('"+self.strasse+"','"+str(self.postleitzahl)+"','"+str(self.hausnummer)+"','"+self.ort+"')"
+            db_cursor.execute(query_adresse_einfuegen)
             db_connection_pizzastars.commit()
             self.adresse_id = db_cursor.lastrowid
-            query_kunde_einfuegen = "insert into kunde (vorname, nachname, adresse_id,email) Values ('"+self.vorname+"','"+self.nachname+"','"+self.adresse_id+"','"+self.email+"')"
+            query_kunde_einfuegen = "insert into kunde (vorname, nachname, adresse_id,email) Values ('"+self.vorname+"','"+self.nachname+"','"+str(self.adresse_id)+"','"+self.email+"')"
             db_cursor.execute(query_kunde_einfuegen) 
             db_connection_pizzastars.commit() 
             db_connection_pizzastars.close()
@@ -76,7 +77,7 @@ class kunde_anlegen:
                   </head>\
                   <body>\
                   <h1>'+self.vorname+' '+self.nachname+', Sie haben erfolgreich Ihre Daten hinterlegt!</h1>\
-                  <p><div class = "text">Hier sind die Personendaten: '+self.vorname+' '+self.nachname+' cm, '+self.adresse+', '+self.email+'€.</div></p>\
+                  <p><div class = "text">Hier sind die Personendaten: '+self.vorname+' '+self.nachname+' cm, '+str(self.adresse_id)+', '+self.email+'€.</div></p>\
                   <p>\
                   <input type="submit" value="Zur&uuml;ck" onclick = "history.back()" />\
                   </p>\
