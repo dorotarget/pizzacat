@@ -3,7 +3,7 @@
 <node TEXT="Pizzacats" FOLDED="false" ID="ID_1710282600" CREATED="1587226137498" MODIFIED="1587226200275" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle" background="#3c3f41">
-    <properties edgeColorConfiguration="#808080ff,#00ddddff,#dddd00ff,#dd0000ff,#00dd00ff,#dd0000ff,#7cddddff,#dddd7cff,#dd7cddff,#7cdd7cff,#dd7c7cff,#7c7cddff" fit_to_viewport="false" show_note_icons="true"/>
+    <properties fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#00ddddff,#dddd00ff,#dd0000ff,#00dd00ff,#dd0000ff,#7cddddff,#dddd7cff,#dd7cddff,#7cdd7cff,#dd7c7cff,#7c7cddff"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -80,7 +80,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="index.html" ID="ID_1961643816" CREATED="1587226402919" MODIFIED="1587226406454"/>
 </node>
@@ -180,12 +179,13 @@
 <node TEXT="Reproduzierbar machen" ID="ID_963891961" CREATED="1587227364213" MODIFIED="1587227371336">
 <node TEXT="Datenbank mit Pizzen erstellen" ID="ID_1758519063" CREATED="1587227371347" MODIFIED="1587227383283"/>
 <node TEXT="html-Seiten nach xampp/htdocs kopieren" ID="ID_798804052" CREATED="1587227589016" MODIFIED="1587227624692"/>
-<node TEXT=".py-Dateien nach xampp/cgi-bin" ID="ID_506954705" CREATED="1587227601430" MODIFIED="1587227660222">
+<node TEXT=".py-Dateien nach xampp/cgi-bin/cgi-bin" ID="ID_506954705" CREATED="1587227601430" MODIFIED="1587234702007">
 <node TEXT="! cgiserver.py mit Python starten" ID="ID_700284391" CREATED="1587227770361" MODIFIED="1587227789960">
 <node TEXT="C:\Users\juerg\AppData\Local\Programs\Python\Python38-32^\python.exe" ID="ID_332403451" CREATED="1587227885909" MODIFIED="1587227897278"/>
 <node TEXT="Rechtsklick auf Datei" ID="ID_469198531" CREATED="1587227967183" MODIFIED="1587227982504">
 <node TEXT="Terminal mit Strg+C schließen" ID="ID_982052911" CREATED="1587227985430" MODIFIED="1587227996971"/>
 </node>
+<node TEXT="start_server.bat - ggf. Pfad anpassen für python.exe/xampp" ID="ID_1265567516" CREATED="1587234663327" MODIFIED="1587234685124"/>
 </node>
 </node>
 <node TEXT="xampp" ID="ID_1185587132" CREATED="1587227724411" MODIFIED="1587227734709">
