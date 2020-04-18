@@ -12,35 +12,22 @@ class kunde_anlegen:
          self.hausnummer=""
          self.ort=""
          self.postleitzahl=""
+         self.adresse_id = -1 # Konvention
 
-      def db(self):
-         db_connection = mysql.connector.connect(host="localhost", user="root", passwd="")
-         cursor_pizza = db_connection.cursor()
-         try:
-            cursor_pizza.execute("use pizzastars")
-         except (Exception):
-            cursor_pizza.execute("create database pizzastars; use pizzastars")
-         while 1:
-               try:
-                  cursor_pizza.execute("insert into kunde (vorname, nachname, email) Values ('"+self.vorname+"','"+self.nachname+"','"+self.email+"')") 
-                  db_connection.commit() 
-                  break
-               except (Exception):
-                  cursor_pizza.execute("create table kunde (kunde_id int not null auto_increment primary key, vorname varchar, nachname int, adresse int, email)")
-                  continue
-              # while True: 
-               #     try:
-                #        cursor_pizza.execute("insert adresse.adresse_id into kunde.adresse_id where '"+self.strasse+"'=kunde.strasse and '"+self.hausnummer+"'=kunde.hausnummer and '"+self.ort+"'=kunde.ort and '"+self.postleitzahl+"'=kunde.postleitzahl ") 
-                 #       db_connection.commit()
-                  #      break
-                   # except (Exception): 
-                    #    cursor_pizza.execute("insert into adresse (strasse, hausnummer, ort, postleitzahl) Values ('"+self.strasse+"','"+self.hausnummer+"','"+self.ort+"', '"+self.postleitzahl+"')") 
-                     #   continue
+      def kunde_in_db_einfuegen(self):
+            db_connection_pizzastars = mysql.connector.connect(host="localhost", user="root", passwd="")  
+            query_db = ("USE pizzastars")
+            db_cursor = db_connection_pizzastars.cursor()
+            db_cursor.execute(query_db)
+            query_adresse_einfuegen = "insert into adresse (strasse, hausnummer, postleitzahl, ort) Values ('"+self.strasse+"','"+self.postleitzahl+"','"+self.hausnummer+"','"+self.ort+"')"
+            db_connection_pizzastars.commit()
+            self.adresse_id = db_cursor.lastrowid
+            query_kunde_einfuegen = "insert into kunde (vorname, nachname, adresse_id,email) Values ('"+self.vorname+"','"+self.nachname+"','"+self.adresse_id+"','"+self.email+"')"
+            db_cursor.execute(query_kunde_einfuegen) 
+            db_connection_pizzastars.commit() 
+            db_connection_pizzastars.close()
 
-         db_connection.close()
-
-
-      def fehler(self):
+      def fehler_ausgeben(self):
             print ("Content-Type: text/html")
             print()
             print( '<!DOCTYPE html>')
@@ -57,7 +44,7 @@ class kunde_anlegen:
                </body>\
                </html>')
 
-      def auswertung(self):
+      def form_validieren(self):
             form = cgi.FieldStorage()
             if "vorname" in form:
                   self.vorname = form["vorname"].value
@@ -74,9 +61,11 @@ class kunde_anlegen:
             if "email" in form:
                   self.email = form["email"].value
             if  (self.vorname=="" or self.nachname=="" or self.strasse=="" or self.hausnummer=="" or self.ort=="" or self.postleitzahl=="" or self.email==""):
-               self.fehler()
+               self.fehler_ausgeben()
             else:
+               self.kunde_in_db_einfuegen()
                self.ausgabe()
+      
       def ausgabe(self):
             print ("Content-Type: text/html")
             print()
@@ -93,7 +82,7 @@ class kunde_anlegen:
                   </p>\
                   </body>\
                   </html>')
-            self.db()
+            
 
 objekt=kunde_anlegen()
-objekt.auswertung()
+objekt.form_validieren()
