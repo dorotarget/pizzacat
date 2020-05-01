@@ -14,7 +14,7 @@ class Pizzaliste:
         print ("Content-Type: text/html")
         print()
         print('<!DOCTYPE html>')
-        print('<head><title>Unsere Pizzen</title><link rel="stylesheet" type="text/css" href="./cssclass.css"/></head>\
+        print('<head><title>Unsere Pizzen</title><link rel="stylesheet" type="text/css" href="./cssclass2.css"/></head>\
                 <div id=content><body>\
                     <table><th>Pizza</th><th>Gr&ouml;sse</th><th>Beschreibung</th><th>Preis</th>')
         db_cursor = db_connection_pizzastars.cursor()
