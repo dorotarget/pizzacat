@@ -75,7 +75,7 @@ class Kunde_anlegen:
             print( '<!DOCTYPE html>')
             print ('<head>\
                   <title>Datenhinterlegung erfolgreich</title>\
-                  <link rel="stylesheet" type="text/css" href="../cssclass.css"/>\
+                  <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/cssclass2.css"/>\
                   </head>\
                   <body>\
                   <h1>'+self.vorname+' '+self.nachname+', Sie haben erfolgreich Ihre Daten hinterlegt!</h1>\

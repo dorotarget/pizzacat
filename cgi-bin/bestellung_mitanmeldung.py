@@ -58,7 +58,7 @@ class Bestellung_aufgeben:
         print ("Content-Type: text/html")
         print()
         print('<!DOCTYPE html>')
-        print('<head><title>Ihre Bestellung</title></head>\
+        print('<head><title>Ihre Bestellung</title><link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/cssclass2.css"/></head>\
                 <body>\
                     <table>\
                     <th>Nr.</th><th>Pizzanummer</th><th>Pizzaname</th><th>Anzahl</th><th>Einzelpreis</th><th>Zwischensumme</th>')

@@ -8,6 +8,13 @@ class Bestellung_aufgeben:
     def __init__(self):
          self.bestellung_id = -1 # besser: "Magic Number", zu faul :-O -> zugunsten Parameter-Aufruf keine globale Variable...
          self.kunde_id = -1 # Konvention
+         self.adresse_id=""
+         self.vorname = ""
+         self.nachname=""
+         self.strasse=""
+         self.hausnummer=""
+         self.postleitzahl=""
+         self.ort=""
 
     def bestellung_auswerten(self):
         form = cgi.FieldStorage()
@@ -55,10 +62,12 @@ class Bestellung_aufgeben:
         db_connection_pizzastars = mysql.connector.connect(host="localhost", user="root", passwd="")
         query_db = ("USE pizzastars")
         query_bestellung = ("SELECT pizza.name, pizza.pizza_id, pizza.einzelpreis, wird_bestellt.anzahl FROM wird_bestellt, bestellung, pizza WHERE bestellung.bestellung_id="+str(aktuelle_bestellung_id)+" AND pizza.pizza_id=wird_bestellt.pizza_id AND bestellung.bestellung_id=wird_bestellt.bestellung_id")
+        query_kundendaten = ("SELECT vorname, nachname, adresse_id FROM kunde WHERE kunde_id="+str(self.kunde_id)+" ")
+        query_adresse= ("Select strasse, hausnummer, postleitzahl, ort from adresse where adresse_id="+str(self.adresse_id)+" ")
         print ("Content-Type: text/html")
         print()
         print('<!DOCTYPE html>')
-        print('<head><title>Ihre Bestellung</title></head>\
+        print('<head><title>Ihre Bestellung</title><link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/cssclass2.css"/></head>\
                 <body>\
                     <table>\
                     <th>Nr.</th><th>Pizzanummer</th><th>Pizzaname</th><th>Anzahl</th><th>Einzelpreis</th><th>Zwischensumme</th>')
@@ -79,8 +88,26 @@ class Bestellung_aufgeben:
             print(zeile_bestellung)
         converted_bestellung_summe = "{0:.2f}".format(bestellung_summe)
         print('<td colspan="6">Gesamtsumme: '+converted_bestellung_summe+'</td>')
+
+        db_cursor.execute(query_kundendaten)
+        kundendaten=db_cursor.fetchall()
+        self.vorname=kundendaten[0][0]
+        self.nachname=kundendaten[0][1]
+        self.adresse_id=kundendaten[0][2]
         print('</table>\
-            </body>')
+            <p>'+self.vorname+' '+self.nachname+' '+str(self.adresse_id)+'</p></body>')
+
+
+        db_cursor.execute(query_adresse)
+        adressdaten=db_cursor.fetchall()
+        self.strasse=adressdaten[0][0]
+        self.hausnummer=adressdaten[0][1]
+        self.postleitzahl=adressdaten[0][2]
+        self.ort=adressdaten[0][3]
+
+
+
+        print('<p>'+self.strasse+' '+str(self.hausnummer)+', '+str(self.postleitzahl)+' '+self.ort+'</p>')
 
 
 bestellung = Bestellung_aufgeben()
