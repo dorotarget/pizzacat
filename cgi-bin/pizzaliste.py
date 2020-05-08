@@ -18,7 +18,8 @@ class Pizzaliste:
         print()
         print('<!DOCTYPE html>')
         print('<head><title>Bitte Pizza ausw&auml;hlen</title></head>\
-                <body><form action="http://localhost:8888/cgi-bin/bestellung_keineanmeldung.py">\
+                <body><form action="http://localhost:8888/cgi-bin/bestellung_keineanmeldung.py">\<section class="section-menü">\
+            <div class="row">\
                     <table>\
                     <th>Nr.</th><th>Pizza</th><th>Gr&ouml;sse</th><th>Beschreibung</th><th>Preis</th><th>Anzahl</th>')
         db_cursor = db_connection_pizzastars.cursor()
@@ -48,7 +49,7 @@ class Pizzaliste:
           <input type="hidden" name="number_of_rows" value="'+converted_iterator+'">\
             <input type="submit" value="Absenden"><input type="reset" value="Zur&uuml;cksetzen"></p>\
               </form>\
-                </body>')
+                </div></section></body>')
 
 objekt=Pizzaliste()
 objekt.pizzaliste_ausgeben()
