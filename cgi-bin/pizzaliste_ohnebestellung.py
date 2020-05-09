@@ -35,9 +35,9 @@ class Pizzaliste:
                         <img src="resources/img/p" alt="Omnifood logo" class="logo">
 
                         <ul class="main-nav">
-                            <li><a href="#">Über uns </a></li>
-                            <li><a href="#"> Registrieren</a></li>
-                            <li><a href="#"> Menü</a></li>
+                            <li><a href="index.html">
+                            <li><a href="ueberuns.html">Über uns </a></li>
+                            <li><a href="kundenanlage.html"."> Registrieren</a></li>
                             <li><a href="#"> Pizzaquiz</a></li>
 
                         </ul>
@@ -60,7 +60,7 @@ class Pizzaliste:
         </header>
         </div><section class="section-menü">\
             <div class="row">\
-                    <table><th>Pizza</th><th>Gr&ouml;sse</th><th>Beschreibung</th><th>Preis</th>""")
+                    <table><th>Nr.</th><th>Pizza</th><th>Gr&ouml;sse</th><th>Beschreibung</th><th>Preis</th>""")
         db_cursor = db_connection_pizzastars.cursor()
         db_cursor.execute(query_db)
         db_cursor.execute(query_all_pizzas)
@@ -71,7 +71,7 @@ class Pizzaliste:
             pizza_row='<tr><td>'+converted_pizza_id+'</td><td>'+name+'</td><td>'+groesze+'</td><td>'+beschreibung+'</td><td>'+converted_einzelpreis+'</td></tr>'
             print(pizza_row)
         print("""</table>\
-            </div></section></body><div class="footer">flkdsrgn</div></div>""")
+            </div></section></body>""")
 
 objekt=Pizzaliste()
 objekt.pizzaliste_ausgeben()

@@ -1,0 +1,974 @@
+
+
+
+/*----------------------------------------------------*/
+/* BASIC SETUP*/
+/*----------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif; /*if Lato not available then Arial, then sans-serif*/
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+.clearfix {zoom: 1}  /*clears the float after element*/
+.clearfix:after {  /*has tobe after so not everything is cleared*/
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+/*----------------------------------------------------*/
+/* REUSABLE COMPONENTS*/
+/*----------------------------------------------------*/
+
+
+.row {
+    max-width: 1140px;
+    margin:0 auto; /*margin top and bottom zero, margin left and right auto-> center*/
+}
+
+
+section {
+    padding: 80px 0;
+}
+
+.box {
+    padding: 1%;
+}
+
+.zentriert {
+    text-align: center;
+    font-size: 120%
+}
+
+/* -------------------------HEADINGS-------------------*/
+
+h1, h2, h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color:#fff;
+    font-size: 240%;  /*standard defined in html is 20px, so400px, automatically*/
+    word-spacing: 4px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size:110%;
+    margin-bottom: 15px;
+}
+
+h2:after {  /* is after h2*/
+    display: block;
+    height: 2px;
+    background-color: #0e8304;
+    content: " ";
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+}
+h2:before {  /* is after h2*/
+    display: block;
+    height: 2px;
+    background-color: #0e8304;
+    content: " ";
+    width: 300px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
+}
+
+/*----------------------Paragraphs---------------------*/
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;  /*15% left plus 70% width and again 15% right is 100%*/
+}
+
+
+
+
+
+/*--------------------------ICONS----------------------*/
+
+.icon-big {
+    font-size: 350%;
+    display: block;
+    color: #0e8304;
+    margin-bottom: 10px;
+}
+
+.icon-small {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #0e8304;
+    font-size: 120%;
+    margin-right: 10px;
+    
+    /*secrets to align text and icons */
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+
+/* -------------------------LINKS-------------------*/
+
+a:link,
+a:visited {
+    color:#0e8304;
+    text-decoration: none;
+    border-bottom: 1px solid #0e8304;
+    padding-bottom: 1px;
+    transition: border-bottom 0.2s, color 0.2s;
+}
+
+a:hover,
+a:active {
+    color: #555;
+    border-bottom: 1px solid transparent;
+    
+}
+/* -------------------------BUTTONS-------------------*/
+
+.btn:link, /*kein leerzeichen nach:!, leerzeichen vor geschweifter Klammer!*/
+.btn:visited,
+input[type=submit],
+input[type=reset]{ /*there is link, visited, active, hover; link s normal, write it in pseudo class*/
+    display: inline-block;  /*mix between inline and block,has margin*/
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;  /*damitlink nicht unterstrichen*/
+    border-radius: 200px;
+    transition: background-color 0.2ss; border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit]{
+    background-color: #0e8304;
+    border: 1px solid #0e8304;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+    border: 1px solid #0e8304;
+    color: #1ac60b;
+}
+
+.btn-hungry:link {
+    border: 1px solid #0e8304;
+    color: #1ac60b;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+    background-color: #0a4805;
+}
+.btn-full:hover,
+.btn-full:active,
+input[type=submit] {
+    border: 1px solid #0a4805;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+    border: 1px solid #0a4805;
+    color: #fff;
+}
+
+
+/*----------------------------------------------------*/
+/*HEADER*/
+/*----------------------------------------------------*/
+
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(img/pizzaofen.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 80vh; /*100% of the view port*/
+}
+
+.header-einloggen header {
+    height: 40vh; /*100% of the view port*/
+}
+
+.header-einloggen .hero-text-box {
+    top: 20%;
+    font-size: 150%;
+}
+.header-vollesbild header {
+    height: 100vh;
+}
+/*
+.hero-text-box {
+    position: absolute;
+    width: 1140px;  willlook like a row because has same width as row, but absolutely positioned
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);  puts half of its width and heigth to the left and up,centersmiddle in middle
+}*/
+/*
+.hero-text-box {
+    display: inline-block;
+    float: left;
+    margin: 50% 0% -10% 0%;
+    height: 50%;
+    font-size: 200%
+}*/
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px; 
+    left: 40%;
+    top: 60%;
+    transform: translate(-51%,-50%);
+    font-size: 200%;
+}
+
+.hero-button {
+    margin-right:30%;
+    float: right;
+    display: block;
+    margin-top: 300px;
+}
+
+.hero-button a {
+    margin-bottom: 20%;
+    width: 100%;
+    text-align: center;
+    
+}
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+.main-nav{
+    float: right;
+    list-style: none;
+    margin-top: 100px;
+    font-size: 120%
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited,
+.main-nav li form input:link{
+    padding: 8px 0px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #2c9605;
+}
+header input[type=submit]{
+    border: none;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 8px 0px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+    
+}
+header input[type=submit]:hover{
+    border: none;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 8px 0px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+    border-bottom: 2px solid #2c9605;
+}
+
+/*----------------------------------------------------*/
+/*Sofort bestellen*/
+/*----------------------------------------------------*/
+
+.sofortbestellen {
+    height:auto;
+}
+
+.sofortbestellen .btn-full {
+    width: 30%;
+    margin-left: 35%;
+}
+
+.sofortbestellen .btn-full:link,
+.sofortbestellen .btn-full:visited{
+    background-color: #cb0d0d;
+    border: 1px solid #cb0d0d;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.sofortbestellen .btn-full:hover,
+.sofortbestellen .btn-full:active,
+input[type=submit] {
+    border: 1px solid #2c9605;
+    background-color: #2c9605;
+}
+
+/*----------------------------------------------------*/
+/*Features*/
+/*----------------------------------------------------*/
+
+.section-features .long-copy {
+    margin-bottom: 30px;
+}
+.section-garantien .long-copy {
+    margin-bottom: 30px;
+}
+
+/*----------------------------------------------------*/
+/*MEALS*/
+/*----------------------------------------------------*/
+
+.section-meals {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.meals-showcase {
+    list-style: none;
+    width: 100%;
+    
+        
+}
+
+.meals-showcase li {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.meal-photo {
+    width: 100%;  /*has exact width of parent meals-showcase li*/
+    margin: 0;
+    overflow: hidden; /*meal-photo img is bigger than container .meal-photo img*/
+    background-color: #000;
+}
+
+
+.meal-photo img{
+    opacity: 0.7;
+    width: 100%;
+    height: auto;
+    transform: scale(1.15);
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.meal-photo img:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+
+/*----------------------------------------------------*/
+/*HOW IT WORKS*/
+/*----------------------------------------------------*/
+
+.section-steps {
+    background-color: #f4f4f4;
+}
+
+
+.steps-box:first-child {
+    text-align: right;  /*works for all inline elements*/
+    padding-right: 3%;
+    margin-top: 30px;
+}
+
+.steps-box:last-child {
+    padding-left: 3%;
+    margin-top: 70px;
+}
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+}
+
+works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+.works-step div {
+    color: #0e8304;
+    border: 2px solid #0e8304;
+    display: inline-block; /*so it doesntforce line-break, can be side by side with text*/
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+.btn-app:link,
+.btn-app:visited {
+    border: 0;
+}
+
+.btn-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+/*----------------------------------------------------*/
+/*CITIES*/
+/*----------------------------------------------------*/
+
+
+.box img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.city-feature {
+    margin-bottom: 5px;
+}
+
+/*----------------------------------------------------*/
+/*TESTIMONIALS*/
+/*----------------------------------------------------*/
+
+.section-testimonials {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)), url(img/back-customers.jpg);
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;
+}
+
+blockquote {
+    padding: 2%;
+    font-style: italic;
+    line-height: 145%;
+    position: relative;  /*has to be relative to allow blockquote:befor be absolute*/
+    margin-bottom: 40px;
+}
+
+blockquote:before {
+    content: "\201C";
+    font-size: 500%;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px; 
+}
+
+
+cite {
+    font-size: 90%;
+    margin-top: 25px;
+    display: block;
+}
+
+cite img {
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+
+/*----------------------------------------------------*/
+/*SIGN UP*/
+/*----------------------------------------------------*/
+
+
+.section-plans {
+    background-color: #f4f4f4;
+    
+}
+
+.plan-box {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 90%;
+    margin-left: 5%;
+    box-shadow: 0 2px 2px #efefef;
+    
+}
+
+.plan-box div:first-child {
+    background-color: #fcfcfc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.plan-box div:last-child {
+    text-align: center;
+    border: 0;
+}
+
+.plan-box div {
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.plan-price {
+    font-size: 300%;
+    margin-bottom: 10px;
+    font-weight: 100;
+    color: #0e8304;
+}
+
+.plan-price span {
+    font-size: 30%;
+    font-weight: 300;
+}
+
+
+.plan-box ul {
+    list-style: none;
+}
+
+.plan-box ul li {
+    padding:5px 0;
+}
+.plan-price-meal {
+    font-size: 80%;
+}
+
+
+/*----------------------------------------------------*/
+/*FORM*/
+/*----------------------------------------------------*/
+
+
+.contact-form {
+    width: 60%;
+    margin: 0 25% 0 15%; /* centers element in parent element*/
+}
+
+input[type=text],
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type=checkbox] {
+    margin: 10px 5px 10px 0;
+}
+
+*:focus {outline: none}
+
+
+.contact-form input[type=submit]{
+    display: block;
+    float: left;
+    width: 48%;
+}
+.contact-form input[type=reset]{
+    background-color: rgba(131, 4, 43, 0);
+    border: 1px solid #cb0d0d;
+    color: #cb0d0d;
+    float: right;
+    width: 48%;
+}
+.contact-form input[type=reset]:hover{
+    background-color: #cb0d0d;
+    border: 1px solid #cb0d0d;
+    color: #fff;
+}
+.button-block {
+    text-align: center;
+    padding: 7px 0%
+}
+.button-block-2 {
+    text-align: center;
+    padding: 7px 0%;
+}
+.contact-form label {
+    float: left;
+    padding-left: 60%;
+    font-size: 120%
+}
+
+.section-forms h2:after {  /* is after h2*/
+    display: block;
+    height: 2px;
+    background-color: #0e8304;
+    content: " ";
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+}
+.section-forms h2:before {  /* is after h2*/
+    display: block;
+    height: 2px;
+    background-color: #0e8304;
+    content: " ";
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 30px;}
+
+.einloggen-überschrift {
+    margin-bottom:40px;
+    margin-left: 20% 
+}
+/*----------------------------------------------------*/
+/*Garantien*/
+/*----------------------------------------------------*/
+
+.section-garantien div p {
+    margin-left: 20%;
+    width: 700px;
+}
+
+.garantien {
+    margin-bottom: 60px;
+    margin-left:20%;
+    margin-right:  20%;
+    width: 700px;
+    text-align: left;
+    float: left;
+    font-size: 110%;
+    border-bottom: 2px solid #aaa;
+}
+
+.garantien:after {  /* is after garantien*/
+    display: block;
+    height: 2px;
+    background-color: #0e8304;
+    content: " ";
+    width: 700px;
+    margin: 0 0;
+    margin-top: 35px;
+    
+}
+
+.garantien:last-of-type {
+    margin-bottom: 80px;
+}
+
+.garantien div {
+    color: #0e8304;
+    display: inline-block; /*so it doesntforce line-break, can be side by side with text*/
+    border-radius: 50%;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 110%;
+    margin-right: 25px;
+
+}
+
+.garantien p {
+    margin-top: 5%;
+    
+}
+/*
+.garantien i {
+    display: block;
+    float: left;
+    font-size: 500%;
+    margin-right: 50px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+*/
+
+/*----------------------------------------------------*/
+/*Pizzasprüche*/
+/*----------------------------------------------------*/
+.section-pizzasprüche {
+    background-image: linear-gradient(rgba(78, 13, 13, 0.49),rgb(0, 0, 0)), url(img/pizzaspruch.jpg);
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;}
+/*----------------------------------------------------*/
+/*Pizzaliste*/
+/*----------------------------------------------------*/
+
+.section-liste {
+    
+}
+
+table {
+    margin: 50;
+    padding: 20;
+    border: 3px solid #0e8304;
+    border-collapse: collapse;
+}
+tr:last-of-type {
+    border-bottom: 3px solid #0e8304;
+}
+
+th {
+    padding: 22px;
+    font-size: 200%;
+    border-bottom: 3px solid #0e8304;
+    border-right: 3px solid #0e8304;
+}
+th:last-of-type {
+    border-right: 0;
+}
+.tr-formier {
+    
+}
+tr {
+}
+
+td {
+    text-align: center;
+    font-size: 110%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d0cbcb;
+    border-right: 1px solid #d0cbcb;
+    padding: 20px;
+}
+
+td:last-child {
+    border-right: 2px solid #0e8304;
+}
+tr:nth-child(even){background-color: rgba(242, 242, 242, 0.67)}
+
+/*----------------------------------------------------------------------------------funktioniert noch nicht,dass letzte Spalte kein dings -------*/
+
+/*----------------------------------------------------*/
+/*über uns*/
+/*----------------------------------------------------*/
+.wertebox{
+    margin: 40px 20px;
+    width: 340px
+
+}
+
+ 
+.wertebox p {
+    margin: 20px;
+    font-size: 90%;
+    line-height: 145%;
+    width: 100%;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid green;
+    font-size: 105%
+}
+
+.wertebox img {
+    width: 100%;
+    height: auto;
+    margin: 0 20px 15px 20px;
+}
+
+.wertebox h3 {
+    width: 100%;
+    margin: 15px 20px;
+    text-align: center;
+    font-size: 120%;
+    font-weight: 400;
+}
+/*----------------------------------------------------*/
+/*willkommen*/
+/*----------------------------------------------------*/
+
+.willkommen {
+    text-align: center;
+    margin: auto;
+}
+.willkommen div {
+    color: #0e8304;
+    display: inline-block; /*so it doesntforce line-break, can be side by side with text*/
+    border-radius: 50%;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 110%;
+    margin-right: 25px;
+
+}
+
+.willkommen p {
+    margin-top: 5%;
+    
+}
+
+.section-willkommen div p {
+    margin-left:
+    width: 700px;
+    text-align: center;
+}
+
+.button-block-2 a,
+.button-block submit {
+    width: 200px;
+}
+/*----------------------------------------------------*/
+/*Bestellende*/
+/*----------------------------------------------------*/
+
+.gesamtsumme {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid red;
+    font-size: 110%;
+    font-weight: 400;
+    background-color: darkgray;
+}
+.gesamtsummebox {
+    
+    background-color: darkgray;
+    border: 3px solid #0e8304;}
+/*----------------------------------------------------*/
+/*Pizza unterwegs*/
+/*----------------------------------------------------*/
+
+/*----------------------------------------------------*/
+/*FOOTER*/
+/*----------------------------------------------------*/
+footer {
+    background-color: #333;
+    padding: 50px;
+    font-size: 80%;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #888;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;   
+}
+
+.soial-links li a:link,  /*irgendwas stimmt da noch nicht...*/
+.soial-links li a:visited {
+    font-size: 180%;
+}
+
+
+.ion-social-facebook,
+.ion-social-twitter,
+.ion-social-googleplus,
+.ion-social-instagram {
+    transition: color 0.2s;
+}
+
+.ion-social-facebook:hover {
+    color: #3b5998;
+}
+
+.ion-social-twitter:hover {
+    color: #00aced;
+}
+
+.ion-social-googleplus:hover {
+    color: #dd4b39;
+}
+
+.ion-social-instagram:hover {
+    color: #517fa4;
+}
+footer p {
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+

@@ -32,6 +32,7 @@ class Bestellung_aufgeben:
         db_connection_pizzastars.commit()
         aktuelle_bestellung_id = db_cursor.lastrowid
         # query_bestellzeile_einfuegen = ("")
+        #kunde_id=self.kunde_id
 
         for r in range(1,zeilen_formular_anzahl+1):    # for each row...
             pizza_id = form["pizzaId"+ str(r)].value
@@ -62,15 +63,64 @@ class Bestellung_aufgeben:
         db_connection_pizzastars = mysql.connector.connect(host="localhost", user="root", passwd="")
         query_db = ("USE pizzastars")
         query_bestellung = ("SELECT pizza.name, pizza.pizza_id, pizza.einzelpreis, wird_bestellt.anzahl FROM wird_bestellt, bestellung, pizza WHERE bestellung.bestellung_id="+str(aktuelle_bestellung_id)+" AND pizza.pizza_id=wird_bestellt.pizza_id AND bestellung.bestellung_id=wird_bestellt.bestellung_id")
-        query_kundendaten = ("SELECT vorname, nachname, adresse_id FROM kunde WHERE kunde_id="+str(self.kunde_id)+" ")
-        query_adresse= ("Select strasse, hausnummer, postleitzahl, ort from adresse where adresse_id="+str(self.adresse_id)+" ")
         print ("Content-Type: text/html")
         print()
         print('<!DOCTYPE html>')
-        print('<head><title>Ihre Bestellung</title><link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/cssclass2.css"/></head>\
-                <body>\
-                    <table>\
-                    <th>Nr.</th><th>Pizzanummer</th><th>Pizzaname</th><th>Anzahl</th><th>Einzelpreis</th><th>Zwischensumme</th>')
+        print("""<?xml version="1.0" ?>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+
+
+                <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/vendors/css/normalize.css"/>
+                <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/vendors/css/grid.css">
+                <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css">
+                <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/resources/css/style.css">
+                <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type="text/css">
+                <title> Pizzacats</title>
+            </head>
+
+
+            <body>
+                <div class="header-einloggen">
+                <header class="header-einloggen">
+                        <nav>
+                            <div class="row">
+                                <img src="resources/img/p" alt="Omnifood logo" class="logo">
+
+                                <ul class="main-nav">
+                                    <li><a href="#">Home </a></li>
+                                    <li><a href="ueberuns.html">Über uns </a></li>
+                            <li>
+                                <form action="http://localhost:8888/cgi-bin/pizzaliste_ohnebestellung.py">
+                                    <input class="input-in-nav" type="submit" value="Pizzamenü">
+                                </form>
+                            </li>
+                                    <li><a href="#"> Pizzaquiz</a></li>
+
+                                </ul>
+                            </div>
+
+                        </nav>
+                        <div class="row">
+                            <div class="col span-1-of-2">
+                                <div class="hero-text-box">
+                                    <h1>Vegan. <br>Glutenfrei. <br>Italienisch.</h1>
+                                </div>
+                            </div>
+                        </div>
+                </header>
+                </div>
+
+                <section class="section-menü">
+                    <div class="row">
+                    <table>
+                        <th>Pizzaname</th>
+                        <th>Anzahl</th>
+                        <th>Zwischensumme</th>
+                        <th>Beschreibung</th>
+                        <th>Einzelpreis</th>""")
         db_cursor = db_connection_pizzastars.cursor()
         db_cursor.execute(query_db)
         db_cursor.execute(query_bestellung)
@@ -84,30 +134,41 @@ class Bestellung_aufgeben:
             zwischensumme_wert=einzelpreis*anzahl
             bestellung_summe += zwischensumme_wert
             zwischensumme_ergebnis= "{0:.2f}".format(zwischensumme_wert)
-            zeile_bestellung='<tr><td>'+str(i)+'</td><td>'+converted_pizza_id+'</td><td>'+name+'</td><td>'+str(anzahl)+'</td><td>'+converted_einzelpreis+'</td><td>'+zwischensumme_ergebnis+'</td></tr>'
+            zeile_bestellung='<tr><td>'+converted_pizza_id+'</td><td>'+name+'</td><td>'+str(anzahl)+'</td><td>'+converted_einzelpreis+'</td><td>'+zwischensumme_ergebnis+'</td></tr>'
             print(zeile_bestellung)
         converted_bestellung_summe = "{0:.2f}".format(bestellung_summe)
-        print('<td colspan="6">Gesamtsumme: '+converted_bestellung_summe+'</td>')
+        print("""
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="gesamtsummebox">""")
+        print('<div class="gesamtsumme">Gesamtsumme: '+converted_bestellung_summe+'</div></td>')
+        print("""
+                </tr>
+            </table>
+            </div>
 
-        db_cursor.execute(query_kundendaten)
-        kundendaten=db_cursor.fetchall()
-        self.vorname=kundendaten[0][0]
-        self.nachname=kundendaten[0][1]
-        self.adresse_id=kundendaten[0][2]
-        print('</table>\
-            <p>'+self.vorname+' '+self.nachname+' '+str(self.adresse_id)+'</p></body>')
-
-
-        db_cursor.execute(query_adresse)
-        adressdaten=db_cursor.fetchall()
-        self.strasse=adressdaten[0][0]
-        self.hausnummer=adressdaten[0][1]
-        self.postleitzahl=adressdaten[0][2]
-        self.ort=adressdaten[0][3]
+            <form>
+                    <div class="row">
 
 
+                            <label>&nbsp;</label>
+                        <div class="button-block-2">""")
+        """print('<form action="http://localhost:8888/cgi-bin/listebestellung.py">\
+                                                <input type="submit" value="Senden">\
+                                                    <input type="hidden" id="kundeId" name="kundeId" value="'+str(self.kunde_id)+'">\
+                                                        <input type="hidden" id="adresseId" name="adresseId" value="'+str(self.adresse_id)+'">\
+                            </form>')"""
+        print("""
+                            <a class="btn btn-full" href="http://localhost/pizzacats/bestaetigt.html">Einverstanden!</a>
+                            <a class="btn btn-ghost" href="index.html">Abbrechen</a>
+                        </div>
+                    </div>
+            </form>
 
-        print('<p>'+self.strasse+' '+str(self.hausnummer)+', '+str(self.postleitzahl)+' '+self.ort+'</p>')
+        </section>""")
 
 
 bestellung = Bestellung_aufgeben()

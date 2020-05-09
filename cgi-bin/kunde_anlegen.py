@@ -73,21 +73,81 @@ class Kunde_anlegen:
             print ("Content-Type: text/html")
             print()
             print( '<!DOCTYPE html>')
-            print ('<head>\
-                  <title>Datenhinterlegung erfolgreich</title>\
-                  <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/cssclass2.css"/>\
-                  </head>\
-                  <body>\
-                  <h1>'+self.vorname+' '+self.nachname+', Sie haben erfolgreich Ihre Daten hinterlegt!</h1>\
-                  <p><div class = "text">Hier sind die Personendaten: '+self.vorname+' '+self.nachname+', '+str(self.adresse_id)+', '+self.email+'</div></p>\
-                  <form action="http://localhost:8888/cgi-bin/pizzaliste.py">\
-                  <input type="hidden" id="kundeId" name="kundeId" value="'+str(self.kunde_id)+'">\
-                  <input type="submit" value="Zur&uuml;ck" onclick = "history.back()" />\
-                  <input type="submit" value="Weiter zur Bestellung" />\
-                  </form>\
-                  </p>\
-                  </body>\
-                  </html>')
+            print ("""
+
+                  <html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+
+
+        <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/vendors/css/normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/vendors/css/grid.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/resources/css/style.css">
+       <!-- <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/resources/css/queries.css"> -->
+        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type="text/css">
+        <title> Pizzacats</title>
+    </head>
+
+
+    <body>
+        <div class="header-einloggen">
+        <header class="header-einloggen">
+                <nav>
+                    <div class="row">
+                        <img src="resources/img/p" alt="Omnifood logo" class="logo">
+
+                        <ul class="main-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="ueberuns.html">Über uns </a></li>
+                            <li>
+                                <form action="http://localhost:8888/cgi-bin/pizzaliste_ohnebestellung.py">
+                                    <input class="input-in-nav" type="submit" value="Pizzamenü">
+                                </form>
+                            </li>
+                            <li><a href="#"> Pizzaquiz</a></li>
+
+                        </ul>
+                    </div>
+
+                </nav>
+                <div class="row">
+                    <div class="col span-1-of-2">
+                        <div class="hero-text-box">
+                            <h1>Vegan. <br>Glutenfrei. <br>Italienisch.</h1>
+                        </div>
+                    </div>
+                </div>
+        </header>
+        </div>
+
+
+        <body>
+
+        <section class="section-willkommen">
+            <div class="row">
+                <h2>Herzlich Willkommen!</h2>""")
+
+            print('<p class="long-copy">'+self.vorname+' '+self.nachname+', Sie haben sich erfolgreich angemeldet!</p><p>Wir liefern an '+self.strasse+' '+str(self.hausnummer)+', '+str(self.postleitzahl)+', '+self.ort+'</p>')
+            print("""   </div>
+            <form>
+                    <div class="row">
+
+
+                            <label>&nbsp;</label>
+                        <div class="button-block-2">
+                            <div class="col span-1-of-2">
+                                <form action="http://localhost:8888/cgi-bin/pizzaliste.py" class="contact-form">
+                                <input type="submit" value="Jetzt bestellen">
+                                <input type="hidden" id="kundeId" name="kundeId" value="'+str(self.kunde_id)+'">
+                                </form>
+                            </div>
+                            <div class="col span-1-of-2">
+                            <a class="btn btn-ghost" href="index.html">Home</a>
+                            </div>
+                        </div>
+                    </div>
+
+                  """)
 
 kundenanlage=Kunde_anlegen()
 kundenanlage.form_validieren()
