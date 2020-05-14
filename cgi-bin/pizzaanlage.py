@@ -66,6 +66,7 @@ class Formular_einlesen:
             print( '<!DOCTYPE html>')
             print ('<head>\
                   <title>Pizzaanlage erfolgreich</title>\
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">\
                   <link rel="stylesheet" type="text/css" href="../cssclasse.css"/>\
                   </head>\
                   <body>\

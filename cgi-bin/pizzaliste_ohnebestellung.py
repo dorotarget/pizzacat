@@ -17,6 +17,7 @@ class Pizzaliste:
         print("""   <head>
 
 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/vendors/css/normalize.css"/>
         <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/vendors/css/grid.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css">
@@ -29,37 +30,35 @@ class Pizzaliste:
 
     <body>
         <div class="header-einloggen">
-        <header class="header-einloggen">
-                <nav>
-                    <div class="row">
-                        <img src="resources/img/p" alt="Omnifood logo" class="logo">
+        <header>
+            <div class="row">
+                <img src="http://localhost/pizzacats/resources/css/img/logo.png" alt="Pizzacats logo" class="logo2">
+            </div>
 
-                        <ul class="main-nav">
-                            <li><a href="index.html">
-                            <li><a href="ueberuns.html">Über uns </a></li>
-                            <li><a href="kundenanlage.html"."> Registrieren</a></li>
-                            <li><a href="#"> Pizzaquiz</a></li>
-
-                        </ul>
-                    </div>
-
-                </nav>
+            <nav>
                 <div class="row">
-                    <div class="col span-1-of-2">
-                        <div class="hero-text-box">
-                            <h1>Vegan. <br>Glutenfrei. <br>Italienisch.</h1>
-                        </div>
-                    </div>
-                   <!-- <div class="col span-1-of-2">
-                        <div class="hero-button">
-                            <a class="btn btn-full" href="#">Anmelden und bestellen</a>
-                            <a class="btn btn-ghost" href="#">Registrieren und bestellen</a>
-                        </div>
-                    </div>-->
+                    <ul class="main-nav">
+                        <li><a href="http://localhost/pizzacats/index.html">Home </a></li>
+                        <li><a href="http://localhost/pizzacats/bestellweiter.html">Bestellen </a></li>
+                        <li><a href="http://localhost/pizzacats/kundenanlage.html"> Registrieren</a></li>
+                        <li><a href="http://localhost/pizzacats/ueberuns.html">Über uns </a></li>
+
+                    </ul>
                 </div>
+
+            </nav>
+            <div class="row">
+                <div class="col span-1-of-2">
+                    <div class="hero-text-box">
+                        <h1>Vegan. <br>Glutenfrei. <br>Italienisch.</h1>
+                    </div>
+                </div>
+            </div>
         </header>
-        </div><section class="section-menü">\
-            <div class="row">\
+        </div>
+
+        </div><section class="section-menü">
+            <div class="row">
                     <table><th>Nr.</th><th>Pizza</th><th>Gr&ouml;sse</th><th>Beschreibung</th><th>Preis</th>""")
         db_cursor = db_connection_pizzastars.cursor()
         db_cursor.execute(query_db)

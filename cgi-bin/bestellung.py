@@ -73,6 +73,7 @@ class Bestellung_aufgeben:
         <head>
 
 
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
                 <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/vendors/css/normalize.css"/>
                 <link rel="stylesheet" type="text/css" href="http://localhost/pizzacats/vendors/css/grid.css">
                 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css">
@@ -83,44 +84,46 @@ class Bestellung_aufgeben:
 
 
             <body>
-                <div class="header-einloggen">
-                <header class="header-einloggen">
-                        <nav>
-                            <div class="row">
-                                <img src="resources/img/p" alt="Omnifood logo" class="logo">
+        <div class="header-einloggen">
+        <header>
+            <div class="row">
+                <img src="http://localhost/pizzacats/resources/css/img/logo.png" alt="Pizzacats logo" class="logo2">
+            </div>
 
-                                <ul class="main-nav">
-                                    <li><a href="#">Home </a></li>
-                                    <li><a href="ueberuns.html">Über uns </a></li>
-                            <li>
-                                <form action="http://localhost:8888/cgi-bin/pizzaliste_ohnebestellung.py">
-                                    <input class="input-in-nav" type="submit" value="Pizzamenü">
-                                </form>
-                            </li>
-                                    <li><a href="#"> Pizzaquiz</a></li>
+            <nav>
+                <div class="row">
+                    <ul class="main-nav">
+                        <li><a href="http://localhost/pizzacats/index.html">Home </a></li>
+                        <li><a href="http://localhost/pizzacats/kundenanlage.html">Registrieren </a></li>
+                        <li><a href="http://localhost/pizzacats/einloggen.html"> Einloggen</a></li>
+                        <li>
+                            <form action="http://localhost:8888/cgi-bin/pizzaliste_ohnebestellung.py">
+                                <input class="input-in-nav" type="submit" value="Pizzamenü">
+                            </form>
+                        </li>
+                        <li><a href="http://localhost/pizzacats/ueberuns.html">Über uns </a></li>
 
-                                </ul>
-                            </div>
-
-                        </nav>
-                        <div class="row">
-                            <div class="col span-1-of-2">
-                                <div class="hero-text-box">
-                                    <h1>Vegan. <br>Glutenfrei. <br>Italienisch.</h1>
-                                </div>
-                            </div>
-                        </div>
-                </header>
+                    </ul>
                 </div>
 
+            </nav>
+            <div class="row">
+                <div class="col span-1-of-2">
+                    <div class="hero-text-box">
+                        <h1>Vegan. <br>Glutenfrei. <br>Italienisch.</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+        </div>
                 <section class="section-menü">
                     <div class="row">
                     <table>
+                        <th>Nr.</th>
                         <th>Pizzaname</th>
                         <th>Anzahl</th>
-                        <th>Zwischensumme</th>
-                        <th>Beschreibung</th>
-                        <th>Einzelpreis</th>""")
+                        <th>Einzelpreis &#8364;</th>
+                        <th>Zwischensumme &#8364;</th>""")
         db_cursor = db_connection_pizzastars.cursor()
         db_cursor.execute(query_db)
         db_cursor.execute(query_bestellung)
@@ -156,14 +159,13 @@ class Bestellung_aufgeben:
 
                             <label>&nbsp;</label>
                         <div class="button-block-2">""")
-        """print('<form action="http://localhost:8888/cgi-bin/listebestellung.py">\
-                                                <input type="submit" value="Senden">\
-                                                    <input type="hidden" id="kundeId" name="kundeId" value="'+str(self.kunde_id)+'">\
-                                                        <input type="hidden" id="adresseId" name="adresseId" value="'+str(self.adresse_id)+'">\
+        """print('<form action="http://localhost:8888/cgi-bin/listebestellung.py">
+                                                <input type="submit" value="Senden">
+                                                    <input type="hidden" id="kundeId" name="kundeId" value="'+str(self.kunde_id)+'">
+                                                        <input type="hidden" id="adresseId" name="adresseId" value="'+str(self.adresse_id)+'">
                             </form>')"""
         print("""
-                            <a class="btn btn-full" href="http://localhost/pizzacats/bestaetigt.html">Einverstanden!</a>
-                            <a class="btn btn-ghost" href="index.html">Abbrechen</a>
+                            <a class="btn btn-full" href="http://localhost/pizzacats/bestaetigt.html">Lecker!</a>
                         </div>
                     </div>
             </form>

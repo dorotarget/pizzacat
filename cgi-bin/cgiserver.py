@@ -1,4 +1,4 @@
-#!C:/Users/juerg/AppData/Local/Programs/Python/Python38-32/python.exe
+#!C:/Python34/python.exe
 
 from http.server import BaseHTTPRequestHandler, HTTPServer, CGIHTTPRequestHandler
 #from CGIHTTPServer import CGIHTTPRequestHandler
